@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Registrazione Utente</title>
+        <link rel="stylesheet"  href="../static/style_reg.css">
+    </head>
+    <body>
+        
+        <form class="box" method="POST">
+            
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="error-flash" role="alert">
+                            <span>{{ message }}</span>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <h1>Registrazione Utente</h1>
+            <div class="ocr">
+                <label for="name" class="form-label">Nome</label>
+                <input type="text" id="nome" class="form-control" name="nome" value="">
+
+                <script>
+                    var nome = '{{nome}}'
+                    document.getElementById("nome").value = nome
+                </script>
+                
+            </div>    
+            <div class="ocr">   
+                <label for="name" class="form-label">Cognome</label>
+                <input type="text" id="cognome" class="form-control" name="cognome" value="">
+
+                <script>
+                    var cognome = '{{cognome}}'
+                    document.getElementById("cognome").value = cognome
+                </script>
+
+            </div>  
+            <div class="form-group">
+                <label for="tel" class="form-label">Telefono</label>
+                <input type="text" id="tel" class="form-control" name="tel" placeholder="Numero di Telefono" required>
+
+                <script>
+                    var tel = '{{tel}}'
+                    document.getElementById("tel").value = tel
+                </script>
+
+            </div>  
+            <div class="form-group">
+                <label for="ind" class="form-label">Indirizzo</label>
+                <input type="text" id="ind" class="form-control" name="ind" placeholder="Indirizzo di Residenza" required>
+
+                <script>
+                    var ind = '{{ind}}'
+                    document.getElementById("ind").value = ind
+                </script>
+
+            </div>
+            <div class="form-group">
+                <label for="email" class="form-label">e-mail</label>
+                <input type="email" id="email" class="form-control" name="email" placeholder="e-mail" required>
+
+                <script>
+                    var email = '{{email}}'
+                    document.getElementById("email").value = email
+                </script>
+
+            </div>
+
+            <div class="bottoni">
+                <input type="reset" name="" value="Reset">
+                <input type="submit" value="Registrati">
+            </div>    
+        </form>
+    </body>
+</html>

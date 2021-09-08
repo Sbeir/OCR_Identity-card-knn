@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>OCR Identity Card Recognition</title>
+    <link rel="stylesheet"  href="../static/style.css">
+  </head>
+  <body>
+
+    <form class="box" method="POST" enctype="multipart/form-data">
+      <h2>Caricare il documento di identit&agrave</h2>
+      <input type="file" id="file" name="file" accept="image/*" required>
+      <label for="file" class="bottone">Seleziona Immagine</label>
+      <div class="image-preview" id="imagePreview">
+          <img src="" alt="Image Preview" class="image-preview__image" style="color:white;">
+          <span class="image-preview__default-text">Image Preview</span>
+      </div>
+
+      <script>
+          const inpFile = document.getElementById("file");
+          const previewContainer = document.getElementById("imagePreview");
+          const previewImage = previewContainer.querySelector(".image-preview__image");
+          const previewDefaultText = previewContainer.querySelector(".image-preview__default-text"); 
+
+          file.addEventListener("change", function() {
+              const file = this.files[0];
+
+              if (file) {
+                  const reader = new FileReader();
+
+                  previewDefaultText.style.display = "none";
+                  previewImage.style.display = "block";
+
+                  reader.addEventListener("load", function() {
+                      previewImage.setAttribute("src", this.result);
+                  });
+
+                  reader.readAsDataURL(file);
+              }else {
+                previewDefaultText.style.display = null;
+                previewImage.style.display = null;
+                previewImage.setAttribute("src", "");
+              }
+
+          }
+          );
+          function Reset() {
+              previewDefaultText.style.display = null;
+              previewImage.style.display = null;
+              previewImage.setAttribute("src", "");
+          }
+
+      </script>
+
+      <input type="reset" onclick="Reset()" value="Rimuovi">
+      <input type="submit" value="Avanti">
+    </form>
+
+  </body>
+</html>
